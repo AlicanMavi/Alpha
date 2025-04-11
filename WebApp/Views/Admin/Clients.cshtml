@@ -2,11 +2,12 @@
 	ViewData["Title"] = "Clients";
 }
 
+<partial name="Partials/Sections/_AddClientForm" />
 
 <section id="clients">
 	<header class="heading-and-btn">
 		<h2>Clients</h2>
-		<button type="button" class="btn btn-blue btn-blue:hover"><i class="fa-sharp fa-solid fa-plus"></i>Add Clients</button>
+		<button type="button" data-modal="true" data-target="#addClientModal" class="btn btn-blue btn-blue:hover btn-add">Add Client</button>
 	</header>
 
 	<div class="surface">

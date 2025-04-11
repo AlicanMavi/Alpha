@@ -7,6 +7,8 @@
 :root {
     --font-standard: "Nunito", sans-serif;
     --font-logo: "Comfortaa", sans-serif;
+    --font-fa-pro: "Font Awesome 6 Pro";
+    --font-fa-free: "Font Awesome 6 Free";
     --font-regular: 400;
     --font-medium: 500;
     --font-semibold: 600;
@@ -34,17 +36,19 @@
     --dark-400: #28263B;
     --dark-500: #333333;
     --dark-600: #38383B;
+    --dark-100-a: rgba(26, 25, 38, 0.2);
+    --dark-100-60: rgba(26, 25, 38, 0.6);
     --yellow: #FFD422;
-    --yellow-light: #f6e938e1;
-    --yellow-dark: #FCBB42;
+    --yellow-light: #FEF8DA;
+    --yellow-dark: #6A5902;
     --orange: #FF9640;
     --orange-dark: #F09330;
     --red: #FF6640;
     --red-dark: #E94D3F;
     --red-light: #e50a0a;
-    --red-semilight: #f66565;
+    --red-semilight: #ffaf99;
     --green: #31D482;
-    --green-light: #62ee26d4;
+    --green-light: #EFFBF1;
     --green-dark: #24B26B;
     --blue: #2CD9D9;
     --blue-accent: #2D99FF;
@@ -77,16 +81,15 @@
     --navlink-background-color: transparent;
     --navlink-background-hover-color: var(--blue-accent-10);
     --navlink-background-active-color: var(--blue-accent-10);
-
-    --table-header-background-color: var(--white-300);
-    --table-header-text-color: var(--gray-700);
+    --table-header-background-color: var(--white-200);
+    --table-header-text-color: var(--gray-800);
     --table-tbody-tr-background-hover-color: var(--blue-accent-10);
-    --modal-screen-background-color: var(--dark-100);
+    --modal-screen-background-color: var(--dark-100-a);
     --modal-background-color: var(--white-100);
     --error-background-color: var(--red-light);
     --error-text-color: var(--red-dark);
     --error-border-color: var(--red-semilight);
-    --text-muted-color: var(--dark-100);
+    --text-muted-color: var(--gray-800);
 }
 
 
@@ -303,6 +306,26 @@ h6 {
         background-color: var(--btn-gray-background-hover-color);
     }
 
+.btn-add::before {
+    content: '\2b';
+    font-family: var(--font-fa-pro);
+}
+
+.btn-close {
+    cursor: pointer;
+    font-size: 2em;
+    border: none;
+    background-color: transparent;
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    .btn-close::after {
+        content: '\f00d';
+        font-family: var(--font-fa-pro);
+    }
+
 /* list */
 .client-list {
     height: 100%;
@@ -393,6 +416,33 @@ input[type="checkbox"] {
     padding: 0.5rem 1rem;
 }
 
+/* Modal */
+.modal {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--modal-screen-background-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+    .modal .modal-content {
+        background-color: var(--modal-background-color);
+        border-radius: 16px;
+        box-shadow: 0 4px 4px 3px rgba(196, 196, 196, 0.1);
+        padding: 2rem;
+    }
+
+        .modal .modal-content .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
 
 /* components */
 .alpha-logotype {
@@ -436,10 +486,6 @@ input[type="checkbox"] {
             background-color: var(--navlink-background-active-color);
         }
 
-.badge-success {
-    color: #2eab07;
-}
-
 /* sections */
 #team-members {
 }
@@ -452,5 +498,9 @@ input[type="checkbox"] {
     height: 100%;
     display: grid;
     grid-template-rows: auto 1fr;
+}
+
+#addClientModal .modal-content {
+    width: 550px;
 }
 /* views/pages */
