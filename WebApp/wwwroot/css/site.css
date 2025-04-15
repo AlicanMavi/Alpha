@@ -45,7 +45,7 @@
     --orange-dark: #F09330;
     --red: #FF6640;
     --red-dark: #E94D3F;
-    --red-light: #e50a0a;
+    --red-light: #FEF0EC;
     --red-semilight: #ffaf99;
     --green: #31D482;
     --green-light: #EFFBF1;
@@ -58,8 +58,11 @@
     --purple: #826AF9;
     --darkpurple: #634CD4;
     --text-color: var(--dark-400);
+    --text-muted-color: var(--gray-800);
+    --text-extra-muted-color: var(--gray-700);
     --headline-color: var(--dark-100);
     --border-color: var(--gray-500);
+    --border-focus-color: var(--blue-accent);
     --background-color: var(--white-300);
     --btn-blue-text-color: var(--white-100);
     --btn-blue-border-color: var(--white-100);
@@ -89,7 +92,7 @@
     --error-background-color: var(--red-light);
     --error-text-color: var(--red-dark);
     --error-border-color: var(--red-semilight);
-    --text-muted-color: var(--gray-800);
+    
 }
 
 
@@ -326,6 +329,11 @@ h6 {
         font-family: var(--font-fa-pro);
     }
 
+.btn-submit {
+    width: 100%;
+    margin-top: 2rem;
+}
+
 /* list */
 .client-list {
     height: 100%;
@@ -404,10 +412,72 @@ table {
    
 
 /* Forms */
+form {
+    width: 100%;
+
+}
+
+    form .form-group {
+        position: relative;
+        display: grid;
+        gap: 0.2rem;
+        margin-bottom: 1.2rem;
+    }
+
+    form .field-group {
+        position: relative;
+    }
+
+    form input,
+    form select,
+    form textarea {
+        width: 100%;
+        font-size: 1em;
+        padding: 0.5rem 1rem;
+        border-radius: 16px;
+        border: 1px solid var(--border-color);
+        outline: none;
+        transition: border-color 0.1s ease-in-out;
+    }
+
+    form input:focus,
+    form select:focus,
+    form textarea:focus {
+        border: 1px solid var(--border-focus-color);
+    }
+
+    form input::placeholder,
+    form select::placeholder,
+    form textarea::placeholder {
+        color: var(--text-extra-muted-color);
+        font-size: 0.9em;
+    }
+
+form .input-validation-error {
+    border-color: var(--error-border-color)
+}
+
+form .field-validation-error {
+    position: absolute;
+    z-index: 1;
+    right: 0.18rem;
+    top: 3px;
+    font-size: 0.8em;
+    background-color: var(--error-background-color);
+    color: var(--error-text-color);
+    padding: 0.4rem 1rem;
+    border-radius: 14px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 input[type="checkbox"] {
     height: 15px;
     width: 15px;
 }
+
 
 /* badges */
 .badge {
@@ -415,6 +485,48 @@ input[type="checkbox"] {
     border-radius: 10px;
     padding: 0.5rem 1rem;
 }
+
+/* image-previewer */
+.image-previewer {
+    border: 2px dashed var(--border-color);
+    height: 150px;
+    width: 150px;
+    margin: 2rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+}
+
+    .image-previewer::after {
+        content: '\f030';
+        font-family: var(--font-fa-pro);
+        font-weight: var(--font-bold);
+        background-color: var(--dark-100-60);
+        color: var(--white-100);
+        padding: 1rem;
+        border-radius: 50%;
+        position: relative;
+        bottom: 0;
+    }
+
+    .image-previewer-selected::after {
+        content: '\f044';
+        position: absolute;
+        bottom: 5px;
+        
+    }
+
+    .image-previewer circle {
+        border-radius: 50%;
+
+    }
+
+    .image-previewer square {
+        border-radius: 16px;
+    }
 
 /* Modal */
 .modal {
@@ -501,6 +613,10 @@ input[type="checkbox"] {
 }
 
 #addClientModal .modal-content {
+    width: 550px;
+}
+
+#editClientModal .modal-content {
     width: 550px;
 }
 /* views/pages */

@@ -1,22 +1,14 @@
-﻿
-@model AddClientForm
+﻿@model AddClientForm
 
-<div id="addClientModal" class="modal">
+<div id="editClientModal" class="modal">
 	<div class="modal-content">
 
 		<div class="modal-header">
-			<h3>Add Client</h3>
+			<h3>Edit Client</h3>
 			<button type="button" class="btn-close" data-close="true"></button>
 		</div>
 
-		<form novalidate method="post" asp-action="AddClient" asp-controller="Admin">
-
-			<div class="image-previewer circle selected">
-				<img src="#" class="image-preview" />
-				<input asp-for="ClientImage" accept="image/*" class="hide" />
-			</div>
-
-
+		<form novalidate method="post" asp-action="EditClient" asp-controller="Admin">
 			<div class="form-group">
 				<label asp-for="ClientName"></label>
 				<div class="field-group">
@@ -54,3 +46,4 @@
 
 	</div>
 </div>
+
