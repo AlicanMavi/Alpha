@@ -6,35 +6,45 @@ namespace WebApp.Controllers;
 [Route("admin")]
 public class AdminController : Controller
 {
+    [HttpGet("members")]
+    public IActionResult Members() => View();
 
-    [Route("members")]
-    public IActionResult Members()
-    {
-        return View();
-    }
+    [HttpGet("clients")]
+    public IActionResult Clients() => View();
 
 
-    [Route("clients")]
-    public IActionResult Clients()
-    {
-        return View();
-    }
-
-    [HttpPost]
+    [HttpPost("clients/add")]
     public IActionResult AddClient(AddClientForm form)
     {
-        if(!ModelState.IsValid)
-            return RedirectToAction("Clients");
+        if (!ModelState.IsValid)
+        {
+            var errors = ModelState
+                .Where(x => x.Value?.Errors.Count > 0)
+                .ToDictionary(
+                    kvp => kvp.Key,
+                    kvp => kvp.Value?.Errors.Select(e => e.ErrorMessage).ToArray()
+                );
+            return BadRequest(new { success = false, errors });
+        }
 
-        return View();
+        return Ok(new { success = true });
     }
 
-    [HttpPost]
-    public IActionResult ÉditClient(AddClientForm form)
+
+    [HttpPost("clients/edit/{id}")]
+    public IActionResult EditClient(int id, EditClientForm form)
     {
         if (!ModelState.IsValid)
-            return RedirectToAction("Clients");
-
-        return View();
+        {
+            var errors = ModelState
+                .Where(x => x.Value?.Errors.Count > 0)
+                .ToDictionary(
+                    kvp => kvp.Key,
+                    kvp => kvp.Value?.Errors.Select(e => e.ErrorMessage).ToArray()
+                );
+            return BadRequest(new { success = false, errors });
+        }
+        return Ok(new { success = true });
     }
 }
+

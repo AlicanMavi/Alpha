@@ -1,14 +1,156 @@
 ﻿@{
 	ViewData["Title"] = "Projects";
 }
+
 <div class="heading-and-btn">
 	<h2>
 		@ViewData["Title"]
 	</h2>
+	<button class="btn btn-blue btn-blue:hover"><i class="fa-sharp fa-solid fa-plus"></i>Add Project</button>
+</div>
 
-	<div>
-		<button class="btn btn-blue btn-blue:hover"><i class="fa-sharp fa-solid fa-plus"></i>Add Project</button>
-	</div>
+	<section class="project-section">
+		<div class="project-menu">
+			<p>ALL [0]</p>
+			<p>STARTED [0]</p>
+			<p>COMPLETED [0]</p>
+		</div>
+
+		<div class="project-container">
+
+			<div class="project-cards">
+				<div class="project-card-flex">
+					<img src="/Images/project-icon.svg" alt="#" />
+
+					<div class="project-company-text">
+						<h6>ASP.NET Web App</h6>
+						<p>EPN Sverige AB</p>
+						
+					</div>	
+				</div>
+				<p>You need to develop an web application on that simulates a admin</p>
+				<i id="project-edit" class="fa-regular fa-ellipsis" data-modal="true" data-target="#editProjectModal"></i>
+			</div>
+
+			<div class="project-cards">
+				<div class="project-card-flex">
+					<img src="/Images/project-icon.svg" alt="#" />
+
+					<div class="project-company-text">
+						<h6>Website Redesign</h6>
+						<p>GitLab Inc.</p>
+
+					</div>
+				</div>
+				<p>It is necessary to develop a website redesign in a corporate style.</p>
+				<i id="project-edit" class="fa-regular fa-ellipsis" data-modal="true" data-target="#editProjectModal"></i>
+			</div>
+
+			<div class="project-cards">
+				<div class="project-card-flex">
+					<img src="/Images/project-icon.svg" alt="#" />
+
+					<div class="project-company-text">
+						<h6>Landing Page</h6>
+						<p>Bitbucket, Inc.</p>
+
+					</div>
+				</div>
+				<p>It is necessary to create a landing together with the development of design.</p>
+				<i id="project-edit" class="fa-regular fa-ellipsis" data-modal="true" data-target="#editProjectModal"></i>
+			</div>
+
+			<div class="project-cards">
+				<div class="project-card-flex">
+					<img src="/Images/project-icon.svg" alt="#" />
+
+					<div class="project-company-text">
+						<h6>Parser Development</h6>
+						<p>Driveway, Inc.</p>
+
+					</div>
+				</div>
+				<p>It is necessary to develop a ticket site parser in python.</p>
+				<i id="project-edit" class="fa-regular fa-ellipsis" data-modal="true" data-target="#editProjectModal"></i>
+			</div>
+
+			<div class="project-cards">
+				<div class="project-card-flex">
+					<img src="/Images/project-icon.svg" alt="#" />
+
+					<div class="project-company-text">
+						<h6>App Development</h6>
+						<p>Slack Technologies, Inc.</p>
+
+					</div>
+				</div>
+				<p>Create a mobile application on iOS and Android devices.</p>
+				<i id="project-edit" class="fa-regular fa-ellipsis" data-modal="true" data-target="#editProjectModal"></i>
+			</div>
+
+			<div class="project-cards">
+				<div class="project-card-flex">
+					<img src="/Images/project-icon.svg" alt="#" />
+
+					<div class="project-company-text">
+						<h6>App Development</h6>
+						<p>Google, Inc.</p>
+
+					</div>
+				</div>
+				<p>Create a mobile application on iOS and Android devices.</p>
+				<i id="project-edit" class="fa-regular fa-ellipsis" data-modal="true" data-target="#editProjectModal"></i>
+			</div>
+
+			<div class="project-cards">
+				<div class="project-card-flex">
+					<img src="/Images/project-icon.svg" alt="#" />
+
+					<div class="project-company-text">
+						<h6>Admin Dashboard</h6>
+						<p>ArtTemplate, Inc.</p>
+
+					</div>
+				</div>
+				<p>Necessary to create Admin Dashboard on Angular 9.</p>
+				<i id="project-edit" class="fa-regular fa-ellipsis" data-modal="true" data-target="#editProjectModal"></i>
+			</div>
+
+			<div class="project-cards">
+				<div class="project-card-flex">
+					<img src="/Images/project-icon.svg" alt="#" />
+
+					<div class="project-company-text">
+						<h6>Web App on Vue.js</h6>
+						<p>ArtTemplate, Inc.</p>
+
+					</div>
+				</div>
+				<p>It is necessary to develop a web app on the framework Vue.js</p>
+				<i id="project-edit" class="fa-regular fa-ellipsis" data-modal="true" data-target="#editProjectModal"></i>
+			</div>
+
+			<div class="project-cards">
+				<div class="project-card-flex">
+					<img src="/Images/project-icon.svg" alt="#" />
+
+					<div class="project-company-text">
+						<h6>App Development</h6>
+						<p>Facebook, Inc.</p>
+
+					</div>
+				</div>
+				<p>Create a mobile application on iOS and Android devices.</p>
+				<i id="project-edit" class="fa-regular fa-ellipsis" data-modal="true" data-target="#editProjectModal"></i>
+			</div>
+
+
+
+		</div>
+
+
+	</section>
+	
 </div>
 
 

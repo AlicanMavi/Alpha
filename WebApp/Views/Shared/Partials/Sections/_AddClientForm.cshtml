@@ -11,11 +11,10 @@
 
 		<form novalidate method="post" asp-action="AddClient" asp-controller="Admin">
 
-			<div class="image-previewer circle selected">
+			<div class="image-previewer circle" onclick="this.querySelector('input').click()">
 				<img src="#" class="image-preview" />
-				<input asp-for="ClientImage" accept="image/*" class="hide" />
+				<input type="file" asp-for="ClientImage" accept="image/*" style="display: none;" />
 			</div>
-
 
 			<div class="form-group">
 				<label asp-for="ClientName"></label>
