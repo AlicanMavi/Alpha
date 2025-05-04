@@ -46,5 +46,40 @@ public class AdminController : Controller
         }
         return Ok(new { success = true });
     }
+
+    [HttpPost("projects/add")]
+    public IActionResult AddProject(AddProjectForm form)
+    {
+        if (!ModelState.IsValid)
+            return BadRequest(new
+            {
+                errors = ModelState
+                .Where(kvp => kvp.Value?.Errors.Count > 0)
+                .ToDictionary(
+                    kvp => kvp.Key,
+                    kvp => kvp.Value?.Errors.Select(e => e.ErrorMessage).ToArray()
+                )
+            });
+
+        return Ok(new { success = true });
+    }
+
+    [HttpPost("projects/edit")]
+    public IActionResult EditProject(EditProjectForm form)
+    {
+        if (!ModelState.IsValid)
+            return BadRequest(new
+            {
+                errors = ModelState
+                .Where(kvp => kvp.Value?.Errors.Count > 0)
+                .ToDictionary(
+                    kvp => kvp.Key,
+                    kvp => kvp.Value?.Errors.Select(e => e.ErrorMessage).ToArray()
+                )
+            });
+
+        return Ok(new { success = true });
+    }
+    
 }
 

@@ -1,157 +1,69 @@
-﻿@{
+﻿	@model IEnumerable<Data.Entities.ProjectEntity>
+@{
 	ViewData["Title"] = "Projects";
+
+	var addProjectForm = new Business.Models.AddProjectForm();
+	var editProjectForm = new Business.Models.EditProjectForm();
 }
 
+<partial name="Partials/Sections/_AddProjectForm" model="addProjectForm" />
+<partial name="Partials/Sections/_EditProjectForm" model="editProjectForm" />
+
+
 <div class="heading-and-btn">
-	<h2>
-		@ViewData["Title"]
-	</h2>
-	<button class="btn btn-blue btn-blue:hover"><i class="fa-sharp fa-solid fa-plus"></i>Add Project</button>
+	<h2>@ViewData["Title"]</h2>
+	<button type="button" data-modal="true" data-target="#addProjectModal" class="btn btn-blue btn-blue:hover btn-add">Add Project</button>
 </div>
 
-	<section class="project-section">
-		<div class="project-menu">
-			<p>ALL [0]</p>
-			<p>STARTED [0]</p>
-			<p>COMPLETED [0]</p>
-		</div>
+<section class="project-section">
+	<div class="project-menu">
+		<p>ALL [@Model.Count()]</p>
+		<p>STARTED [0]</p>
+		<p>COMPLETED [0]</p>
+	</div>
 
-		<div class="project-container">
+	<div class="project-container">
+		@foreach (var project in Model)
+		{
+			<div class="project-cards"
+				 data-id="@project.Id"
+				 data-name="@project.ProjectName"
+				 data-client="@project.Client.ClientName"
+				 data-description="@project.Description"
+				 data-startdate="@project.StartDate.ToString("yyyy-MM-dd")"
+				 data-enddate="@project.EndDate?.ToString("yyyy-MM-dd")"
+				 data-budget="@project.Budget">
 
-			<div class="project-cards">
 				<div class="project-card-flex">
-					<img src="/Images/project-icon.svg" alt="#" />
-
+					<img src="/Images/project-icon.svg" alt="Project Icon" />
 					<div class="project-company-text">
-						<h6>ASP.NET Web App</h6>
-						<p>EPN Sverige AB</p>
-						
-					</div>	
-				</div>
-				<p>You need to develop an web application on that simulates a admin</p>
-				<i id="project-edit" class="fa-regular fa-ellipsis" data-modal="true" data-target="#editProjectModal"></i>
-			</div>
-
-			<div class="project-cards">
-				<div class="project-card-flex">
-					<img src="/Images/project-icon.svg" alt="#" />
-
-					<div class="project-company-text">
-						<h6>Website Redesign</h6>
-						<p>GitLab Inc.</p>
-
+						<h6>@project.ProjectName</h6>
+						<p>@project.Client.ClientName</p>
 					</div>
 				</div>
-				<p>It is necessary to develop a website redesign in a corporate style.</p>
-				<i id="project-edit" class="fa-regular fa-ellipsis" data-modal="true" data-target="#editProjectModal"></i>
-			</div>
 
-			<div class="project-cards">
-				<div class="project-card-flex">
-					<img src="/Images/project-icon.svg" alt="#" />
+				<p>@project.Description</p>
 
-					<div class="project-company-text">
-						<h6>Landing Page</h6>
-						<p>Bitbucket, Inc.</p>
-
+				<div class="project-options">
+					<button class="btn-icon project-options-toggle" type="button">
+						<i class="fa-solid fa-ellipsis-vertical"></i>
+					</button>
+					<div class="project-options-menu">
+						<button type="button" class="project-option" data-action="edit">
+							<i class="fa-solid fa-pen"></i> Edit Project
+						</button>
+						<button type="button" class="project-option delete" data-action="delete" data-id="@project.Id">
+							<i class="fa-solid fa-trash"></i> Delete Project
+						</button>
 					</div>
 				</div>
-				<p>It is necessary to create a landing together with the development of design.</p>
-				<i id="project-edit" class="fa-regular fa-ellipsis" data-modal="true" data-target="#editProjectModal"></i>
 			</div>
+		}
+	</div>
+</section>
 
-			<div class="project-cards">
-				<div class="project-card-flex">
-					<img src="/Images/project-icon.svg" alt="#" />
-
-					<div class="project-company-text">
-						<h6>Parser Development</h6>
-						<p>Driveway, Inc.</p>
-
-					</div>
-				</div>
-				<p>It is necessary to develop a ticket site parser in python.</p>
-				<i id="project-edit" class="fa-regular fa-ellipsis" data-modal="true" data-target="#editProjectModal"></i>
-			</div>
-
-			<div class="project-cards">
-				<div class="project-card-flex">
-					<img src="/Images/project-icon.svg" alt="#" />
-
-					<div class="project-company-text">
-						<h6>App Development</h6>
-						<p>Slack Technologies, Inc.</p>
-
-					</div>
-				</div>
-				<p>Create a mobile application on iOS and Android devices.</p>
-				<i id="project-edit" class="fa-regular fa-ellipsis" data-modal="true" data-target="#editProjectModal"></i>
-			</div>
-
-			<div class="project-cards">
-				<div class="project-card-flex">
-					<img src="/Images/project-icon.svg" alt="#" />
-
-					<div class="project-company-text">
-						<h6>App Development</h6>
-						<p>Google, Inc.</p>
-
-					</div>
-				</div>
-				<p>Create a mobile application on iOS and Android devices.</p>
-				<i id="project-edit" class="fa-regular fa-ellipsis" data-modal="true" data-target="#editProjectModal"></i>
-			</div>
-
-			<div class="project-cards">
-				<div class="project-card-flex">
-					<img src="/Images/project-icon.svg" alt="#" />
-
-					<div class="project-company-text">
-						<h6>Admin Dashboard</h6>
-						<p>ArtTemplate, Inc.</p>
-
-					</div>
-				</div>
-				<p>Necessary to create Admin Dashboard on Angular 9.</p>
-				<i id="project-edit" class="fa-regular fa-ellipsis" data-modal="true" data-target="#editProjectModal"></i>
-			</div>
-
-			<div class="project-cards">
-				<div class="project-card-flex">
-					<img src="/Images/project-icon.svg" alt="#" />
-
-					<div class="project-company-text">
-						<h6>Web App on Vue.js</h6>
-						<p>ArtTemplate, Inc.</p>
-
-					</div>
-				</div>
-				<p>It is necessary to develop a web app on the framework Vue.js</p>
-				<i id="project-edit" class="fa-regular fa-ellipsis" data-modal="true" data-target="#editProjectModal"></i>
-			</div>
-
-			<div class="project-cards">
-				<div class="project-card-flex">
-					<img src="/Images/project-icon.svg" alt="#" />
-
-					<div class="project-company-text">
-						<h6>App Development</h6>
-						<p>Facebook, Inc.</p>
-
-					</div>
-				</div>
-				<p>Create a mobile application on iOS and Android devices.</p>
-				<i id="project-edit" class="fa-regular fa-ellipsis" data-modal="true" data-target="#editProjectModal"></i>
-			</div>
-
-
-
-		</div>
-
-
-	</section>
 	
-</div>
+
 
 
 
